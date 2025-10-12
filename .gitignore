@@ -1,0 +1,21 @@
+# Build artifacts
+**/bin/
+**/dist/
+**/build/
+**/node_modules/
+**/*.log
+
+# Docker
+*.env
+*.pid
+*.seed
+**/tmp/
+
+# Go
+**/vendor/
+**/*.exe
+**/*.out
+
+# Next.js
+.next/
+.env.local
