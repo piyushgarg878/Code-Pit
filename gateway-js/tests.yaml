@@ -1,0 +1,105 @@
+tests:
+  # -------- User Service --------
+  - name: "Signup New User"
+    method: "POST"
+    url: "http://localhost:3000/signup"
+    headers:
+      Content-Type: "application/json"
+    body: |
+      {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "password": "StrongPassword123"
+      }
+    expected_status: 201
+
+  - name: "Signin User"
+    method: "POST"
+    url: "http://localhost:3000/signin"
+    headers:
+      Content-Type: "application/json"
+    body: |
+      {
+        "name": "John Doe",
+        "password": "StrongPassword123"
+      }
+    expected_status: 200
+
+  - name: "Get User by Name"
+    method: "GET"
+    url: "http://localhost:3000/users/user/John%20Doe"
+    headers:
+      Content-Type: "application/json"
+    body: ""
+    expected_status: 200
+
+  - name: "Get User Profile (Protected)"
+    method: "GET"
+    url: "http://localhost:3000/users/profile/1"
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer <JWT_TOKEN>"
+    body: ""
+    expected_status: 200
+
+  - name: "Update User Profile (Protected)"
+    method: "PUT"
+    url: "http://localhost:3000/users/updateprofile/1"
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer <JWT_TOKEN>"
+    body: |
+      {
+        "bio": "Senior Software Engineer",
+        "avatar": "http://example.com/new_avatar.png"
+      }
+    expected_status: 200
+
+  # -------- Problem Service --------
+  - name: "Get All Questions"
+    method: "GET"
+    url: "http://localhost:3000/problems"
+    headers:
+      Content-Type: "application/json"
+    body: ""
+    expected_status: 200
+
+  - name: "Get Question by ID"
+    method: "GET"
+    url: "http://localhost:3000/problems/1"
+    headers:
+      Content-Type: "application/json"
+    body: ""
+    expected_status: 200
+
+  - name: "Get Question by Slug"
+    method: "GET"
+    url: "http://localhost:3000/problems/slug/two-sum"
+    headers:
+      Content-Type: "application/json"
+    body: ""
+    expected_status: 200
+
+  # -------- Submission Service --------
+  - name: "Submit Code"
+    method: "POST"
+    url: "http://localhost:3000/submissions"
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer <JWT_TOKEN>"
+    body: |
+      {
+        "source_code": "print('Hello World')",
+        "language_id": 71,
+        "stdin": ""
+      }
+    expected_status: 201
+
+  - name: "Get Submission Result"
+    method: "GET"
+    url: "http://localhost:3000/submissions/<SUBMISSION_TOKEN>"
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer <JWT_TOKEN>"
+    body: ""
+    expected_status: 200
