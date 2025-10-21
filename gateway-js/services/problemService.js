@@ -1,6 +1,6 @@
 import axios from "axios";
-import { config } from "../config/index.js";
-
+import dotenv from "dotenv";
+dotenv.config();
 const PROBLEM_SERVICE_URL = process.env.PROBLEM_SERVICE_URL || "http://localhost:8081"; // replace with actual URL
 
 export async function getAllQuestions(filters) {
@@ -8,7 +8,7 @@ export async function getAllQuestions(filters) {
   return axios.get(`${PROBLEM_SERVICE_URL}/api/v1/questions${query}`);
 }
 
-export async function getQuestionById(id) {
+export async function getQuestionById(id) { 
   return axios.get(`${PROBLEM_SERVICE_URL}/api/v1/questions/${id}`);
 }
 
