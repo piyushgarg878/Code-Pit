@@ -73,7 +73,7 @@ export default function Profile() {
       <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         {/* Profile Header */}
         <div className="p-6 border-b border-gray-700">
-          <h1 className="text-2xl font-bold">{user?.name}'s Profile</h1>
+          <h1 className="text-2xl font-bold">{user?.name}&apos;s Profile</h1>
           <p className="text-gray-400">{user?.email}</p>
         </div>
         
